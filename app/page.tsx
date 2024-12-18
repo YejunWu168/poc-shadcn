@@ -44,7 +44,10 @@ export default function Home() {
           </Button>
         </Section>
         <Section title='Dropdown'>
-          <ComboboxDemo />
+          <div className='flex gap-2 flex-col'>
+            <ComboboxDemo />
+            <ComboboxDemo disabled={true} />
+          </div>
         </Section>
         <Section title='Datepicker'>
           <DatePickerDemo />

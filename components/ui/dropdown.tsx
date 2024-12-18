@@ -42,7 +42,7 @@ const frameworks = [
   },
 ];
 
-export function ComboboxDemo() {
+export function ComboboxDemo({ disabled }: { disabled?: boolean }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
@@ -50,6 +50,7 @@ export function ComboboxDemo() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          disabled={disabled}
           variant='combobox'
           role='combobox'
           size='combobox'
