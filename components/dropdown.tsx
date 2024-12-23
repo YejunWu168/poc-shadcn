@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { Check, ChevronDown } from 'lucide-react';
+import * as React from "react";
+import { Check, ChevronDown } from "lucide-react";
 
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -12,58 +12,51 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 
 const frameworks = [
   {
-    value: 'next.js',
-    label: 'Next.js',
+    value: "next.js",
+    label: "Next.js",
   },
   {
-    value: 'sveltekit',
-    label: 'SvelteKit',
+    value: "sveltekit",
+    label: "SvelteKit",
   },
   {
-    value: 'nuxt.js',
-    label: 'Nuxt.js',
+    value: "nuxt.js",
+    label: "Nuxt.js",
   },
   {
-    value: 'remix',
-    label: 'Remix',
+    value: "remix",
+    label: "Remix",
   },
   {
-    value: 'astro',
-    label: 'Astro',
+    value: "astro",
+    label: "Astro",
   },
 ];
 
 export function ComboboxDemo({ disabled }: { disabled?: boolean }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          disabled={disabled}
-          variant='combobox'
-          role='combobox'
-          size='combobox'
-          aria-expanded={open}
-          className='w-[200px] justify-between'
-        >
+        <Button disabled={disabled} role="combobox" aria-expanded={open}>
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : 'Kies een optie'}
-          <ChevronDown className='opacity-50' />
+            : "Kies een optie"}
+          <ChevronDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-[200px] p-0'>
+      <PopoverContent className="w-[200px] p-0">
         <Command>
           {/* <CommandInput placeholder='Search framework...' /> */}
           <CommandList>
@@ -74,15 +67,15 @@ export function ComboboxDemo({ disabled }: { disabled?: boolean }) {
                   key={framework.value}
                   value={framework.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? '' : currentValue);
+                    setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
                   }}
                 >
                   {framework.label}
                   <Check
                     className={cn(
-                      'ml-auto',
-                      value === framework.value ? 'opacity-100' : 'opacity-0'
+                      "ml-auto",
+                      value === framework.value ? "opacity-100" : "opacity-0"
                     )}
                   />
                 </CommandItem>

@@ -19,7 +19,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "./chart";
+} from "./ui/chart";
 import Link from "next/link";
 
 const chartData = [
@@ -94,7 +94,7 @@ export function BarChart() {
         <ChartLegend content={<ChartLegendContent />} />
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis onClick={(e) => console.log(e)} dataKey="month" />
-        <YAxis width={30} />
+        <YAxis />
       </RechartBarChart>
     </ChartContainer>
   );

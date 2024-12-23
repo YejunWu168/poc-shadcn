@@ -1,61 +1,68 @@
 import { Button } from "@/components/ui/button";
-import { ComboboxDemo } from "@/components/ui/dropdown";
-import { DatePickerDemo } from "@/components/ui/datepicker";
-import { BarChart } from "@/components/ui/barChart";
+import { ComboboxDemo } from "@/components/dropdown";
+import { DatePickerDemo } from "@/components/datepicker";
+import { BarChart } from "@/components/bar-chart";
 import { X } from "lucide-react";
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section>
-      <h3 className="text-2xl font-semibold mb-5 pb-4 border-b text-gray-600">
-        {title}
-      </h3>
-      <div className="grid items-center">
-        <div className="flex gap-2">{children}</div>
-      </div>
-    </section>
-  );
-}
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Home() {
   return (
-    <main className="max-w-6xl mx-auto py-10">
+    <main className="max-w-6xl mx-auto py-10 px-4">
+      <div className="absolute right-4">
+        <ModeToggle />
+      </div>
       <h1 className="text-4xl font-semibold mb-10">POC Shadcn</h1>
-      <div className="grid grid-cols-3 gap-x-12 gap-y-24">
-        <Section title="Default">
-          <Button>Button</Button>
-        </Section>
-        <Section title="Outline">
-          <Button variant="outline">Button</Button>
-        </Section>
-        <Section title="Icon Button">
-          <Button>
-            <X />
-            Button
-          </Button>
-          <Button variant="outline">
-            <X />
-            Button
-          </Button>
-        </Section>
-        <Section title="Dropdown">
-          <div className="flex gap-2 flex-col">
+      <div className="grid gap-2 grid-cols-2 md:grid-cols-3">
+        <Card>
+          <CardHeader>Button (default)</CardHeader>
+          <CardContent>
+            <Button>Button</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>Button (outline)</CardHeader>
+          <CardContent>
+            <Button variant="outline">Button</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>Button (Icon)</CardHeader>
+          <CardContent>
+            <Button>
+              <X />
+              Button
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>Dropdown</CardHeader>
+          <CardContent>
             <ComboboxDemo />
-            <ComboboxDemo disabled={true} />
-          </div>
-        </Section>
-        <Section title="Datepicker">
-          <DatePickerDemo />
-        </Section>
-        <Section title="Bar chart">
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>Dropdown (disabled</CardHeader>
+          <CardContent>
+            <ComboboxDemo disabled />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>DatePicker</CardHeader>
+          <CardContent>
+            <DatePickerDemo />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>Bar Chart</CardHeader>
           <BarChart />
-        </Section>
+        </Card>
       </div>
     </main>
   );
